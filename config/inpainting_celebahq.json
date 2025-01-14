@@ -20,7 +20,7 @@
                 "name": ["data.dataset", "InpaintDataset"], // import Dataset() class / function(not recommend) from data.dataset.py (default is [data.dataset.py])
                 "args":{ // arguments to initialize dataset
                     // train_giga
-                    "data_root": "png_celebahq_256/png_local_train_5_test.flist",
+                    "data_root": "/kaggle/input/png-celebahq-256/png_celebahq_256/png_train_1000_train_kaggle.flist",
                     // train_local_test_giga
 //                    "data_root": "datasets/celebahq_flist/flist/train_shuffled_local_test.flist",
 
@@ -33,17 +33,17 @@
                 } 
             },
             "dataloader":{
-                "validation_split": 2, // percent or number
+                "validation_split": 10, // percent or number
                 "args":{ // arguments to initialize train_dataloader
-                    "batch_size": 1, // batch size in each gpu
-                    "num_workers": 0,
+                    "batch_size": 5, // batch size in each gpu
+                    "num_workers": 10,
                     "shuffle": true,
                     "pin_memory": true,
                     "drop_last": true
                 },
                 "val_args":{ // arguments to initialize valid_dataloader, will overwrite the parameters in train_dataloader
-                    "batch_size": 1, // batch size in each gpu
-                    "num_workers": 0,
+                    "batch_size": 5, // batch size in each gpu
+                    "num_workers": 10,
                     "shuffle": false,
                     "pin_memory": true,
                     "drop_last": false
@@ -144,7 +144,7 @@
     },
 
     "train": { // arguments for basic training
-        "n_epoch": 300, // max epochs, not limited now
+        "n_epoch": 200, // max epochs, not limited now
         "n_iter": 1e8, // max interations
         "val_epoch": 100, // valdation every specified number of epochs
         "save_checkpoint_epoch": 1,
